@@ -3,7 +3,12 @@ body {
     color: aliceblue;
 }
 
-#gameTitle, .start-container{
+#gameTitle{
+    text-decoration: underline;
+    text-align: center;
+} 
+
+.start-container{
     text-align: center;
 }
 
@@ -25,4 +30,8 @@ body {
 
 #warPlayer-card, #warCpu-card{
     display: none;
+}
+
+button:hover {
+    
 }

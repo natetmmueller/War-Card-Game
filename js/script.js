@@ -14,6 +14,7 @@ let cpuWar = []
 let drawEl = document.getElementById('draw-card-button')
 let restartEl = document.getElementById('restart-card-button')
 
+
 let playerCardEl = document.getElementById('player-card')
 let cpuCardEl = document.getElementById('cpu-card')
 
@@ -38,6 +39,7 @@ function initializeValues(){
     cpuWar = []
     playerCardValue = 'back-blue'
     cpuCardValue = 'back-red'
+    drawEl.disabled = false
 }
 
 function startUp(){
@@ -48,6 +50,7 @@ function startUp(){
     displayCard()
     displayCardAmount()
     console.log(playerCardValue)
+    testWinViaWar()
     // warTestDealDeck()
     // testWinDeck()
 }
@@ -89,8 +92,10 @@ function handleClick(){
 function checkWin(){
     if(playerHand.length == 52){
         publishResults("Congratulations lieutenant, you won the war!")
+        drawEl.disabled = true
     } else if(cpuHand.length == 52){
         publishResults("We lost the war, we will get them next time!")
+        drawEl.disabled = true
     } else{
         return
     }
@@ -132,12 +137,37 @@ function compareCards(){
         cpuWar = []
         console.log(cpuHand)
     }else{
+        warEvent()
+    }
+}
+
+function warEvent(){
+    if(playerHand.length < 4){
+        cpuHand.push(playerCardValue)
+        cpuHand.push(cpuCardValue)
+        cpuHand = cpuHand.concat(playerWar)
+        cpuHand = cpuHand.concat(cpuWar)
+        hideWarCards()
+        playerWar = []
+        cpuWar = []
+        cpuHand = cpuHand.concat(playerHand)
+        playerHand = []
+    } else if(cpuHand.length < 4){
+        playerHand.push(playerCardValue)
+        playerHand.push(cpuCardValue)
+        playerHand = playerHand.concat(playerWar)
+        playerHand = playerHand.concat(cpuWar)
+        hideWarCards()
+        playerWar = []
+        cpuWar = []
+        playerHand = playerHand.concat(cpuHand)
+        cpuHand = []
+    }else {
         playWar()
     }
 }
 
 function playWar(){
-
     playerWar.push(playerCardValue)
     cpuWar.push(cpuCardValue)
     for(let i=0; i < 3; i++){
@@ -166,14 +196,20 @@ function displayCardAmount(){
 }
 
 
-// function warTestDealDeck(){
-//     cpuHand = ['s07', 's09', 'd07', 'sJ', 'c10', 'hJ', 'c03', 'cA', 's02', 'd08', 'cK', 'dA', 'h03', 'h07', 'c04', 'd09',  'h05', 'h06', 'c05', 'cJ', 'd06', 'sQ', 's04', 'dJ', 'd03', 'dQ']
+function warTestDealDeck(){
+    cpuHand = ['s07', 's09', 'd07', 'sJ', 'c10', 'hJ', 'c03', 'cA', 's02', 'd08', 'cK', 'dA', 'h03', 'h07', 'c04', 'd09',  'h05', 'h06', 'c05', 'cJ', 'd06', 'sQ', 's04', 'dJ', 'd03', 'dQ']
 
-//     playerHand = ['h02', 'd02', 'c07', 'cQ', 'h09', 'd10', 's03', 'd05', 'hA', 's08', 'hK', 'hQ', 'c02', 'sA', 's10', 'sK', 's06', 'dK', 'd04',  'h10', 'h04', 'c08', 'c09', 'c06', 'h08', 's05']
-// }
+    playerHand = ['h02', 'd02', 'c07', 'cQ', 'h09', 'd10', 's03', 'd05', 'hA', 's08', 'hK', 'hQ', 'c02', 'sA', 's10', 'sK', 's06', 'dK', 'd04',  'h10', 'h04', 'c08', 'c09', 'c06', 'h08', 's05']
+}
 
-// function testWinDeck(){
-//     playerHand = ['s07', 's09', 'c07', 'cQ', 'h09', 'd10', 's03', 'd05', 'hA', 's08', 'hK', 'hQ', 'c02', 'c09','d04', 'sK', 's06', 'dK', 's05', 's10',  'h10', 'h04', 'c08', 'sA' , 'c06', 'dQ']
+function testWinDeck(){
+    playerHand = ['s07', 's09', 'c07', 'cQ', 'h09', 'd10', 's03', 'd05', 'hA', 's08', 'hK', 'hQ', 'c02', 'c09','d04', 'sK', 's06', 'dK', 's05', 's10',  'h10', 'h04', 'c08', 'sA' , 'c06', 'dQ']
 
-//     cpuHand = ['h02', 'd02', 'd07', 'sJ', 'c10', 'hJ', 'c03', 'cA', 's02', 'd08', 'cK', 'dA', 'h03', 'h07', 'c04', 'd09',  'h05', 'h06', 'c05', 'cJ', 'd06', 'sQ', 's04', 'dJ', 'd03', 'h08']
-// }
+    cpuHand = ['h02', 'd02', 'd07', 'sJ', 'c10', 'hJ', 'c03', 'cA', 's02', 'd08', 'cK', 'dA', 'h03', 'h07', 'c04', 'd09',  'h05', 'h06', 'c05', 'cJ', 'd06', 'sQ', 's04', 'dJ', 'd03', 'h08']
+}
+
+function testWinViaWar(){
+    playerHand = ['s07', 's09', 'c07', 'cQ', 'h09', 'd10', 's03', 'd05', 'hA', 's08', 'hK', 'hQ', 'c02', 'c09','d04', 'sK', 's06', 'dK', 's05', 's10',  'h10', 'h04', 'sA' , 'c06', 'dQ', 'c08']
+
+    cpuHand = ['h02', 'd02', 'd07', 'sJ', 'c10', 'hJ', 'c03', 'cA', 's02', 'd08', 'cK', 'dA', 'h03', 'h07', 'c04', 'd09',  'h05', 'h06', 'c05', 'cJ', 'd06', 'sQ', 's04', 'dJ', 'd03', 'h08']
+}
