@@ -1,0 +1,28 @@
+body {
+    background-image: url("istockphoto-579756166-170667a.jpg") ;
+    color: aliceblue;
+}
+
+#gameTitle, .start-container{
+    text-align: center;
+}
+
+.inPlay-card-container{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.tally-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cpu-war-contaier, .player-war-contaier, .ending{
+    display: flex;
+    justify-content: center;
+}
+
+#warPlayer-card, #warCpu-card{
+    display: none;
+}
