@@ -52,9 +52,6 @@ function initializeValues(){
     drawEl.disabled = false
 }
 
-
-
-
 function createCards(){
     for(const suit of suits){
         for(const value of values){
@@ -88,8 +85,6 @@ function handleClick(){
     compareCards()
     displayCardAmount()
     checkWin()
-    console.log(playerHand)
-    console.log(cpuHand)
 }
 
 function checkWin(){
