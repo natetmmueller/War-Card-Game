@@ -12,9 +12,9 @@ In the rare case of a war with the player not having enough cards to participate
 
 ## Screenshots:
 
-[Starting game board](img/starting.png)
-[In game board](img/in-game.png)
-[War scenario](img/war.png)
+![Starting game board](img/starting.png)
+![In game board](img/in-game.png)
+![War scenario](img/war.png)
 
 ## Technologies Used:
 
