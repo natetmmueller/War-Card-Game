@@ -1,5 +1,5 @@
 body {
-    background-image: url("istockphoto-579756166-170667a.jpg") ;
+    background-image: url("Background-img.jpg") ;
     color: aliceblue;
 }
 
@@ -32,6 +32,34 @@ body {
     display: none;
 }
 
-button:hover {
-    
+#restart-card-button, #draw-card-button{
+    background-color: white;
+    height: 25px;
+    width: 100px;
+    box-shadow: inset 0 0 0 0 rgb(253, 249, 0);
+    transition: ease-out 0.6s;
+ }
+
+#draw-card-button:hover {
+    box-shadow: inset 100px 0 0 0 rgb(0, 221, 250);
 }
+#restart-card-button:hover{
+    box-shadow: inset 100px 0 0 0 rgb(255, 2, 221);
+}
+
+#videoButton{
+    height: 18px;
+    width: 25px;
+    display: flex;
+}
+
+iframe{
+    height: 200px;
+    width: 200px;
+    display: inline;
+}
+
+#videoButton:hover{
+    background-color: red;
+}
+

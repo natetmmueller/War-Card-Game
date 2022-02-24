@@ -11,23 +11,30 @@ let cpuCardValue = 'back-red'
 let playerWar = []
 let cpuWar = []
 /*----- cached element references -----*/
-let drawEl = document.getElementById('draw-card-button')
-let restartEl = document.getElementById('restart-card-button')
+const drawEl = document.getElementById('draw-card-button')
+const restartEl = document.getElementById('restart-card-button')
+const videoButtonEl = document.getElementById('videoButton')
+const videoEl = document.getElementById('video')
 
+const soundEl = document.getElementById('sound')
 
-let playerCardEl = document.getElementById('player-card')
-let cpuCardEl = document.getElementById('cpu-card')
+const playerCardEl = document.getElementById('player-card')
+const cpuCardEl = document.getElementById('cpu-card')
 
-let playerCardAmount = document.getElementById('player-tally')
-let cpuCardAmount = document.getElementById('cpu-tally')
+const playerCardAmount = document.getElementById('player-tally')
+const cpuCardAmount = document.getElementById('cpu-tally')
 
-let PlayerFlippedWarCard = document.getElementById('inPlayWarPlayer-card')
-let cpuFlippedWarCard = document.getElementById('inPlayWarCpu-card')
-let warCpuCards = document.querySelectorAll('#warCpu-card')
-let warPlayerCards = document.querySelectorAll('#warPlayer-card')
+const PlayerFlippedWarCard = document.getElementById('inPlayWarPlayer-card')
+const cpuFlippedWarCard = document.getElementById('inPlayWarCpu-card')
+const warCpuCards = document.querySelectorAll('#warCpu-card')
+const warPlayerCards = document.querySelectorAll('#warPlayer-card')
 /*----- event listeners -----*/
 drawEl.addEventListener('click', handleClick)
+
 restartEl.addEventListener('click', startUp)
+
+videoButtonEl.addEventListener('click', closeInstructions)
+
 /*----- functions -----*/
 startUp()
 
@@ -41,6 +48,9 @@ function initializeValues(){
     cpuCardValue = 'back-red'
     drawEl.disabled = false
 }
+function flipNoise(){
+    soundEl.play()
+}
 
 function startUp(){
     initializeValues()
@@ -49,8 +59,12 @@ function startUp(){
     dealCards()
     displayCard()
     displayCardAmount()
+    hideWarCards()
     console.log(playerCardValue)
     testWinViaWar()
+    startUpResults()
+    
+
     // warTestDealDeck()
     // testWinDeck()
 }
@@ -78,8 +92,13 @@ function dealCards(){
 }
 console.log(playerHand)
 
+function startUpResults(){
+    document.getElementById('result').innerText = "Who will win the battle?"
+}
+
 function handleClick(){
     drawCards()
+    flipNoise()
     displayCard()
     compareCards()
     displayCardAmount()
@@ -195,6 +214,10 @@ function displayCardAmount(){
     console.log("working")
 }
 
+function closeInstructions(){
+    videoEl.remove()
+    videoButtonEl.remove()
+}
 
 function warTestDealDeck(){
     cpuHand = ['s07', 's09', 'd07', 'sJ', 'c10', 'hJ', 'c03', 'cA', 's02', 'd08', 'cK', 'dA', 'h03', 'h07', 'c04', 'd09',  'h05', 'h06', 'c05', 'cJ', 'd06', 'sQ', 's04', 'dJ', 'd03', 'dQ']

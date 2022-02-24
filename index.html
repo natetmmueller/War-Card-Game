@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Game</title>
+    <title>Nates War Game</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="card-deck-css/css/cardstarter.css"/>
     <script src="js/script.js" defer></script>
@@ -26,12 +26,12 @@
         </div>
         <div class="tally-container">
             <div class="cpu-tally-container">
-                <div id="cpu-tally">CPU Cards:</div>
+                <h2 id="cpu-tally">CPU Cards:</h2>
 
             </div>
-            <div class="ending" id="result">Who will win the battle?</div>
+            <h2 class="ending" id="result">Who will win the battle?</h2>
             <div class="player-tally-container">
-                <div id="player-tally">Player Cards:</div>
+                <h2 id="player-tally">Player Cards:</h2>
             </div>
         </div>
         <div class="warContainer">
@@ -51,6 +51,10 @@
             </div>
         </div>
     </div>
-   
+   <audio id="sound"><source src= "css/Card-Flip.mp3"></audio>
+    <div>
+        <button id="videoButton">X</button>
+        <iframe width="420" height="315" id="video" src="https://www.youtube.com/embed/yX-jOVer758"></iframe>
+    </div>
 </body>
 </html>
