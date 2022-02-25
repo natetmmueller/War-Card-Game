@@ -19,8 +19,6 @@ const playerCardEl = document.getElementById('player-card')
 const cpuCardEl = document.getElementById('cpu-card')
 const playerCardAmount = document.getElementById('player-tally')
 const cpuCardAmount = document.getElementById('cpu-tally')
-const PlayerFlippedWarCard = document.getElementById('inPlayWarPlayer-card')
-const cpuFlippedWarCard = document.getElementById('inPlayWarCpu-card')
 const warCpuCards = document.querySelectorAll('#warCpu-card')
 const warPlayerCards = document.querySelectorAll('#warPlayer-card')
 
